@@ -83,3 +83,42 @@ $ npm run dev
 ```
 $ npm i fastify
 ```
+
+## Instalando o `Prisma`
+- O `Prisma` é uma ferramenta para trabalhar com banco de dados
+- Ele permite que a gente automatize a criação de tabelas, campos, cargas de dados, etc que podem ser feitas utilizando um recurso chamado `Migrations`
+- Ele também facilita na criação de queries que envolve o CRUD básico, e até construções mais complexas fazendo toda a abstração.
+- E para instalar essa ferramenta como dependência de desenvolvimento, digite o seguinte comando no terminal:
+```
+$ npm i prisma -D
+```
+- Para iniciar a configuração e instalar o nosso banco de dados `SQLite`, digite o seguinte comando no terminal:
+```
+$ npx prisma init --datasource-provider SQLite
+```
+  - _O Prisma permit que posteriormente, caso a gente precise alterar o banco de dados, essa mudança será totalmente transparente._
+- Esse comando cria alguns arquivos no projeto, como o `.env` que é o arquivo de variáveis de ambiente, e a pasta `prisma` que é onde ficarão todas as nossas configurações, incluindo os modelos `ORM` as `Migrations` e outras configurações que forem necessárias.
+
+## Criando uma Tabela no Banco de Dados
+- No arquivo `/prisma/schema.prisma` vamos criar nossa primeira tabela com o nome `trips` representado pelo modelo ORM `Trip`
+```
+model Trip {
+  id           String   @id @default(uuid())
+  destination  String
+  starts_at    DateTime
+  ends_at      DateTime
+  is_confirmed Boolean  @default(false)
+  created_at   DateTime @default(now())
+
+  @@map("trips")
+}
+```
+- E para aplicar esse modelo no banco de dados, digite o seguinte comando no terminal:
+```
+$ npx prisma migrate dev
+```
+- Esse comando monitora todas as alterações na estrutura dos modelos do arquivo `schema.prisma` e solicita um nome para a criação do arquivo de migração, no meu caso eu informei o nome `create trips table` e o comando gerou uma pasta `/prisma/migrations` e dentro dessa pasta, o primeiro arquivo SQL de migração com o script de criação da tabela para o SQLite
+- O `Prisma` possui uma ferramenta chamada `Prisma Studio` que nos permite visualizar todas as alterações realizadas no banco de dados. Para isso digite:
+```
+$ npx prisma studio
+```
