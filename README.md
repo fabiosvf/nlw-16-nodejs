@@ -33,16 +33,16 @@
 ## Iniciando o projeto
 - Crie uma pasta para o projeto e acesse a pasta via terminal e digite o seguinte comando:
 ```
-npm init -y
+$ npm init -y
 ```
 - Este comando irá iniciar o projeto com o arquivo `package.json` que é responsável por todas as configurações do projeto `Node`
 - Em seguida vamos instalar o `TypeScript` e seu pacote de tipos como dependência de desenvolvimento. E para isso, digite:
 ```
-npm i typescript @types/node -D
+$ npm i typescript @types/node -D
 ```
 - Agora precisamos criar o arquivo `tsconfig.json` que é o arquivo de configuração do `TypeScript`. Então digite:
 ```
-npx tsc --init
+$ npx tsc --init
 ```
 - Para obter as configurações padrão recomendadas, procure no google por:
 ```
@@ -53,7 +53,7 @@ tsconfig bases
 - Copie todo o conteúdo do arquivo `tsconfig.json` sugerido e substitua o conteudo no arquivo do projeto
 - E pra finalizar essa parte, como o `Node` por padrão não reconhece o `TypeScript`, a gente vai precisar instalar uma ferramenta como dependencia de desenvolvimento que ficará responsável por converter o código `TypeScript` em `JavaScript` nativo. Para isso digite:
 ```
-npm i tsx -D
+$ npm i tsx -D
 ```
 - Para fins de teste, crie a pasta `src` na raiz do projeto e em seguida o arquivo `server.ts` dentro dessa pasta e digite o código:
 ```ts
@@ -61,11 +61,11 @@ console.log('Hello World')
 ```
 - E para executar esse código, digite no terminal o seguinte comando:
 ```
-npx tsx src/server.ts
+$ npx tsx src/server.ts
 ```
 - Agora, caso queira que o tsx fique escultando o código, e execute automaticamente toda ver que identificar alterações no código, digite no terminal o seguinte comando:
 ```
-npx tsx watch src/server.ts
+$ npx tsx watch src/server.ts
 ```
 - Para automatizar um pouco mais esse procedimento, adicione o seguinte parâmetro na sessão `scripts` do arquivo `package.json`:
 ```json
@@ -75,10 +75,11 @@ npx tsx watch src/server.ts
 ```
 - E agora, pra executar essa rotina, digite o seguinte comando no terminal:
 ```
-npm run dev
+$ npm run dev
 ```
 
-
-
-
-
+## Instalando o `Fastify`
+- Primeiro vamos instalar o `Fastify` que é framework utilizado para subir um servidor que ficará escutando as requisições através de uma porta específica previamente configurada. Para instalar digite no terminal:
+```
+$ npm i fastify
+```
